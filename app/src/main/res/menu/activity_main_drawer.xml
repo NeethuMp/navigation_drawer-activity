@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_a"
+            android:icon="@drawable/ic_action_a"
+            android:title="A" />
+        <item
+            android:id="@+id/nav_b"
+            android:icon="@drawable/ic_action_b"
+            android:title="B" />
+        <item
+            android:id="@+id/nav_c"
+            android:icon="@drawable/ic_action_c"
+            android:title="C" />
+
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/settings"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Settings" />
+
+        </menu>
+    </item>
+
+</menu>
