@@ -1,6 +1,15 @@
 package com.example.neethu.navigationdraweractivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +18,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.transition.Transition;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,27 +28,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         FragmentA.OnFragmentInteractionListener, FragmentB.OnFragmentInteractionListener,
         FragmentC.OnFragmentInteractionListener {
-
+    private static final String TAG = "MainActivity";
+    Bitmap bm;
+    ImageView mImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+//        mImage= (ImageView) findViewById(R.id.imageView);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -48,7 +62,39 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+//        mImage = (ImageView) navigationView.findViewById(R.id.imageView);
+//        mImage = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.imageView);
+//        bm= BitmapFactory.decodeResource(getResources(),
+//                R.drawable.andru);
+//        bm = getCircleBitmap(bm);
+//        mImage.setImageBitmap(getCircleBitmap(bm));
+//        bm.recycle();
+//        mImage.setImageResource(R.drawable.andru);
     }
+
+
+//        private Bitmap getCircleBitmap(Bitmap bitmap) {
+//            final Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+//                    bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+//            final Canvas canvas = new Canvas(output);
+//
+//            final int color = Color.RED;
+//            final Paint paint = new Paint();
+//            final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+//            final RectF rectF = new RectF(rect);
+//
+//            paint.setAntiAlias(true);
+//            canvas.drawARGB(0, 0, 0, 0);
+//            paint.setColor(color);
+//            canvas.drawOval(rectF, paint);
+//
+//            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+//            canvas.drawBitmap(bitmap, rect, rect, paint);
+//
+//            //bitmap.recycle();
+//
+//            return output;
+//        }
 
     @Override
     public void onBackPressed() {
